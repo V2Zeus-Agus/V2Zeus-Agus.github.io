@@ -4,7 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Agustín Daniel Vigo · Gameplay Programmer & Level Designer</title>
-<meta name="description" content="Portfolio of Agustín Daniel Vigo, gameplay programmer and level designer working in Unity and C#.">
+<meta name="description" content="Portfolio of Agustín Daniel Vigo, gameplay programmer and level designer working in Unity and C#. Projects, skills, CV and contact.">
+<meta property="og:title" content="Agustín Daniel Vigo · Gameplay Programmer & Level Designer">
+<meta property="og:description" content="Unity / C# gameplay programmer and level designer. Published games, team projects and online multiplayer.">
+<meta property="og:image" content="https://img.itch.zone/aW1nLzMwMTU2Mjg1LmpwZw==/315x250%23c/o0vH0H.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -100,7 +103,6 @@
     color: var(--muted); font-size: 0.9rem; text-align: center; padding: 16px;
   }
   .media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-  .media { aspect-ratio: 315 / 250; }
 
   .inspector { background: var(--panel); border: 1px solid var(--line); border-radius: 4px; font-size: 0.95rem; }
   .inspector summary {
@@ -152,6 +154,43 @@
   .contact-links { display: flex; gap: 24px; margin-top: 24px; flex-wrap: wrap; }
   footer { padding: 28px 0; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); }
 
+
+  .media { aspect-ratio: 315 / 250; transition: border-color .15s, transform .15s; text-decoration: none; }
+  a.media:hover { border-color: var(--amber); transform: translateY(-2px); }
+  .media .play {
+    position: absolute; left: 12px; bottom: 12px; z-index: 2;
+    background: rgba(17,19,24,.88); color: var(--text); border: 1px solid var(--line);
+    font-size: .8rem; font-weight: 600; padding: 4px 10px; border-radius: 3px;
+  }
+  .media svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .project-nav { display: flex; flex-wrap: wrap; gap: 8px; margin: -24px 0 48px; }
+  .project-nav a {
+    font-size: .85rem; color: var(--muted); text-decoration: none;
+    border: 1px solid var(--line); border-radius: 3px; padding: 4px 10px;
+  }
+  .project-nav a:hover { color: var(--text); border-color: var(--amber); }
+  .project { scroll-margin-top: 80px; }
+  section { scroll-margin-top: 40px; }
+  .stats { display: flex; flex-wrap: wrap; gap: 36px; margin-top: 48px; }
+  .stat b { display: block; font-family: var(--display); font-size: 2rem; color: var(--text); line-height: 1.1; }
+  .stat span { color: var(--muted); font-size: .9rem; }
+  .about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; }
+  .about-grid p { color: #c9ced8; margin-bottom: 16px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 4px; padding: 20px 22px; }
+  .card h3 { font-family: var(--display); font-size: 1.2rem; margin-bottom: 4px; }
+  .card .when { color: var(--amber); font-size: .9rem; margin-bottom: 10px; }
+  .card p { color: #c9ced8; font-size: .95rem; margin: 0; }
+  .card + .card { margin-top: 16px; }
+  .skills { grid-template-columns: repeat(3, 1fr); }
+  .skill ul { margin: 12px 0 0 18px; color: #c9ced8; font-size: .95rem; }
+  .stack { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 48px; }
+  .stack .card h4 { font-family: var(--display); font-size: 1rem; color: var(--amber); margin-bottom: 8px; }
+  .contact-links a { font-weight: 600; text-decoration: none; }
+  .contact-links a:hover { text-decoration: underline; }
+  @media (max-width: 800px) {
+    .about-grid, .skills { grid-template-columns: 1fr; }
+    .wrap { padding: 0 16px; }
+  }
   @media (max-width: 800px) {
     nav ul { display: none; }
     .project, .skills { grid-template-columns: 1fr; }
@@ -165,218 +204,269 @@
 
 <nav>
   <div class="wrap">
-    <a class="brand" href="#">Agustín Daniel Vigo<span>.</span></a>
+    <a class="brand" href="#top">Agustín Daniel Vigo<span>.</span></a>
     <ul>
+      <li><a href="#about">About</a></li>
       <li><a href="#projects">Projects</a></li>
-      <li><a href="#what-i-do">What I do</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
 </nav>
 
-<header class="hero">
+<header class="hero" id="top">
   <div class="wrap">
-    <div class="status">Buenos Aires, Argentina · Available full-time</div>
+    <div class="status">Buenos Aires, Argentina · Available full-time · EU work authorization</div>
     <h1>Agustín<br>Daniel Vigo</h1>
-    <div class="role">Gameplay Programmer & Level Designer</div>
-    <p class="lead">I program player mechanics, enemy behavior and the systems that make a game feel good to play. I also design the levels where all of that happens. Game Development student at UADE, working in Unity and C#.</p>
+    <div class="role">Gameplay Programmer & Level Designer · Unity / C#</div>
+    <p class="lead">I program player mechanics, enemy AI and the systems that make a game feel good to play, and I design the levels where all of that happens. Advanced Game Development student at UADE, lead programmer on complete, published projects.</p>
     <div class="actions">
       <a class="btn btn-main" href="#projects">See projects</a>
-      <!-- Upload your CV as a PDF to the repo, named cv.pdf -->
-      <a class="btn btn-alt" href="cv.pdf" download>Download CV</a>
+      <a class="btn btn-alt" href="cv.pdf.pdf" target="_blank" rel="noopener">Download CV (PDF)</a>
       <a class="btn btn-alt" href="https://www.linkedin.com/in/agust%C3%ADn-daniel-vigo-652928181/" target="_blank" rel="noopener">LinkedIn</a>
       <a class="btn btn-alt" href="https://zeus-agus.itch.io" target="_blank" rel="noopener">itch.io</a>
+      <a class="btn btn-alt" href="https://github.com/V2Zeus-Agus" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <div class="stats">
+      <a class="stat" href="#projects" style="text-decoration:none"><b>7</b><span>games built</span></a>
+      <a class="stat" href="https://zeus-agus.itch.io" target="_blank" rel="noopener" style="text-decoration:none"><b>6</b><span>published on itch.io</span></a>
+      <a class="stat" href="#extract-or-die" style="text-decoration:none"><b>Online</b><span>multiplayer with Photon</span></a>
+      <a class="stat" href="#urban-lockdown" style="text-decoration:none"><b>AI</b><span>behavior trees & pathfinding</span></a>
     </div>
   </div>
 </header>
 
 <main>
+<section id="about">
+  <div class="wrap">
+    <h2>About me</h2>
+    <p class="section-intro">Who I am and what I bring to a team.</p>
+    <div class="about-grid">
+      <div>
+        <p>I'm a game developer from Buenos Aires focused on <strong>gameplay programming</strong> and <strong>level design</strong> in Unity and C#. I enjoy the part of development where code meets feel: tuning movement, building enemies that react intelligently, and shaping spaces that guide the player without words.</p>
+        <p>I've worked in teams from 2 to 8 people, always with version control in Git, and I've shipped games across different genres: shoot 'em ups, top-down arena shooters, an online co-op extraction shooter, an AI-driven 3D shooter and a first-person exploration game in Unreal Engine 5.</p>
+        <p>I hold Argentine, Spanish and Italian citizenship, which gives me EU work authorization, and I'm open to remote or relocation opportunities.</p>
+      </div>
+      <div>
+        <div class="card">
+          <h3>Looking for</h3>
+          <p>Internships, junior gameplay programmer or level designer roles, and indie collaborations.</p>
+        </div>
+        <div class="card">
+          <h3>Languages</h3>
+          <p>Spanish (native) · Brazilian Portuguese (native) · English (B1, intermediate)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="projects">
   <div class="wrap">
     <h2>Projects</h2>
-    <p class="section-intro">Games made during my degree and on my own. Each one states exactly what I worked on.</p>
+    <p class="section-intro">Games made during my degree and on my own. Each one states exactly what I worked on. Click a cover to play it.</p>
+    <div class="project-nav"><a href="#galactic-defenders">Galactic Defenders</a><a href="#urban-lockdown">Urban Lockdown</a><a href="#extract-or-die">Extract or Die</a><a href="#project-forge">Project-Forge</a><a href="#waves-of-blood">Waves of Blood</a><a href="#my-bomberman">My Bomberman</a><a href="#the-secret-dungeon">The Secret Dungeon</a></div>
 
-    <!-- GALACTIC DEFENDERS -->
-    <article class="project">
-      <div class="media">
-        Add the itch.io cover at img/galactic.png
-        <img src="img/galactic.png" alt="Galactic Defenders gameplay" onerror="this.remove()">
-      </div>
+    <article class="project" id="galactic-defenders">
+      <a class="media" href="https://romangaelv.itch.io/galactic-defenders" target="_blank" rel="noopener" aria-label="Open Galactic Defenders on itch.io">
+        <img src="https://img.itch.zone/aW1nLzMwMTU2Mjg1LmpwZw==/315x250%23c/o0vH0H.jpg" alt="Galactic Defenders cover art" loading="lazy">
+        <span class="play">▶ Play on itch.io</span>
+      </a>
       <details class="inspector" open>
-        <summary>Galactic Defenders <span class="tag">Released on itch.io</span></summary>
+        <summary>Galactic Defenders <span class="tag">Published on itch.io</span></summary>
         <dl class="fields">
-          <div class="field"><dt>Role</dt><dd>Lead programmer and level designer</dd></div>
+          <div class="field"><dt>Role</dt><dd>Lead programmer and sole level designer</dd></div>
           <div class="field"><dt>Engine</dt><dd>Unity, C#</dd></div>
           <div class="field"><dt>Team</dt><dd>4 people</dd></div>
-          <div class="field"><dt>Systems</dt><dd class="chips">
-            <span>Shooting</span><span>Movement</span><span>Enemy AI</span><span>Waves</span>
-            <span>Power-ups</span><span>Bosses</span><span>Object pooling</span><span>Persistent settings</span>
-          </dd></div>
+          <div class="field"><dt>Genre</dt><dd>2D shoot 'em up</dd></div>
+          <div class="field"><dt>Systems</dt><dd class="chips"><span>Shooting</span><span>Player movement</span><span>Enemy AI</span><span>Wave spawning</span><span>Power-ups</span><span>Boss encounters</span><span>Object pooling</span><span>Persistent settings</span></dd></div>
         </dl>
-        <p class="desc">Retro 2D shooter where you defend the galaxy from waves of aliens. I was the lead programmer (about 60% of the code) and the sole level designer. After the course ended I went back and improved it: an options menu that saves resolution and volume between sessions, multi-resolution support, and a physics-based fix for bullets passing through enemies.</p>
+        <p class="desc">Retro 2D space shooter where you defend Earth from waves of aliens. I wrote about 60% of the code and designed every level. I optimized the enemy and projectile spawner with object pooling, and built a settings system (resolution, fullscreen, volume) that persists between sessions. After the course ended I kept improving it: multi-resolution support and a physics-based fix for fast bullets passing through enemies (version 1.3).</p>
         <div class="links">
-          <a href="https://romangaelv.itch.io/galactic-defenders">Play on itch.io</a>
-          <!-- Replace with your repo link -->
-          <a href="https://github.com/V2Zeus-Agus">Source code</a>
+          <a href="https://romangaelv.itch.io/galactic-defenders" target="_blank" rel="noopener">Play on itch.io →</a>
         </div>
       </details>
     </article>
-
-    <!-- PROJECT-FORGE -->
-    <article class="project">
-      <div class="media">
-        Add a screenshot at img/forge.png
-        <img src="img/forge.png" alt="Project-Forge screenshot" onerror="this.remove()">
-      </div>
+    <article class="project" id="urban-lockdown">
+      <a class="media" href="https://zeus-agus.itch.io/urban-lockdo" target="_blank" rel="noopener" aria-label="Open Urban Lockdown on itch.io">
+        <img src="https://img.itch.zone/aW1nLzMwODk2NjYyLmpwZw==/315x250%23c/81R0n%2B.jpg" alt="Urban Lockdown cover art" loading="lazy">
+        <span class="play">▶ Play on itch.io</span>
+      </a>
+      <details class="inspector" open>
+        <summary>Urban Lockdown <span class="tag">AI showcase</span></summary>
+        <dl class="fields">
+          <div class="field"><dt>Role</dt><dd>AI programmer (shared with 1 partner)</dd></div>
+          <div class="field"><dt>Engine</dt><dd>Unity 2022.3 LTS, C#</dd></div>
+          <div class="field"><dt>Team</dt><dd>2 people</dd></div>
+          <div class="field"><dt>Period</dt><dd>Sep – Dec 2025</dd></div>
+          <div class="field"><dt>Systems</dt><dd class="chips"><span>Pathfinding</span><span>Obstacle avoidance</span><span>Line of sight</span><span>Behavior trees</span><span>State machine</span></dd></div>
+        </dl>
+        <p class="desc">3D shooter built around intelligent enemies that patrol, chase and flank the player. I built the NPC pathfinding with dynamic obstacle avoidance, line-of-sight detection for enemy awareness, a behavior tree architecture with action inheritance, and the enemy state machine (patrol and chase) with smooth transitions between states.</p>
+        <div class="links">
+          <a href="https://zeus-agus.itch.io/urban-lockdo" target="_blank" rel="noopener">Play on itch.io →</a>
+        </div>
+      </details>
+    </article>
+    <article class="project" id="extract-or-die">
+      <a class="media" href="https://zeus-agus.itch.io/extract-or-die" target="_blank" rel="noopener" aria-label="Open Extract or Die on itch.io">
+        <img src="https://img.itch.zone/aW1nLzMwMDU0ODIzLnBuZw==/315x250%23c/7VSOwh.png" alt="Extract or Die cover art" loading="lazy">
+        <span class="play">▶ Play on itch.io</span>
+      </a>
+      <details class="inspector" open>
+        <summary>Extract or Die <span class="tag">Online multiplayer</span></summary>
+        <dl class="fields">
+          <div class="field"><dt>Role</dt><dd>Networking and UI programming</dd></div>
+          <div class="field"><dt>Engine</dt><dd>Unity, C#, Photon PUN2</dd></div>
+          <div class="field"><dt>Team</dt><dd>5 people</dd></div>
+          <div class="field"><dt>Genre</dt><dd>Isometric co-op shooter</dd></div>
+          <div class="field"><dt>Systems</dt><dd class="chips"><span>Photon PUN2</span><span>Lobbies and rooms</span><span>Online sync</span><span>Revive system</span><span>UI and menus</span><span>Co-op up to 5</span></dd></div>
+        </dl>
+        <p class="desc">Online co-op extraction shooter for up to 5 players: escape a maze through waves of enemies and reach the extraction point. Downed teammates can be revived within 15 seconds. I worked on the networking layer with Photon PUN2 (lobbies, rooms and state synchronization) and programmed the game's UI and menus.</p>
+        <div class="links">
+          <a href="https://zeus-agus.itch.io/extract-or-die" target="_blank" rel="noopener">Play on itch.io →</a>
+          <a href="https://github.com/V2Zeus-Agus/JuegosEnRedTP1" target="_blank" rel="noopener">Source code →</a>
+        </div>
+      </details>
+    </article>
+    <article class="project" id="project-forge">
+      <div class="media"><svg viewBox="0 0 315 250" role="img" aria-label="Project-Forge"><defs><linearGradient id="fg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a1d10"/><stop offset="1" stop-color="#14161b"/></linearGradient></defs><rect width="315" height="250" fill="url(#fg)"/><g stroke="#f2b134" stroke-opacity=".18"><line x1="0" y1="0" x2="0" y2="250"/><line x1="21" y1="0" x2="21" y2="250"/><line x1="42" y1="0" x2="42" y2="250"/><line x1="63" y1="0" x2="63" y2="250"/><line x1="84" y1="0" x2="84" y2="250"/><line x1="105" y1="0" x2="105" y2="250"/><line x1="126" y1="0" x2="126" y2="250"/><line x1="147" y1="0" x2="147" y2="250"/><line x1="168" y1="0" x2="168" y2="250"/><line x1="189" y1="0" x2="189" y2="250"/><line x1="210" y1="0" x2="210" y2="250"/><line x1="231" y1="0" x2="231" y2="250"/><line x1="252" y1="0" x2="252" y2="250"/><line x1="273" y1="0" x2="273" y2="250"/><line x1="294" y1="0" x2="294" y2="250"/><line x1="315" y1="0" x2="315" y2="250"/><line x1="0" y1="0" x2="315" y2="0"/><line x1="0" y1="21" x2="315" y2="21"/><line x1="0" y1="42" x2="315" y2="42"/><line x1="0" y1="63" x2="315" y2="63"/><line x1="0" y1="84" x2="315" y2="84"/><line x1="0" y1="105" x2="315" y2="105"/><line x1="0" y1="126" x2="315" y2="126"/><line x1="0" y1="147" x2="315" y2="147"/><line x1="0" y1="168" x2="315" y2="168"/><line x1="0" y1="189" x2="315" y2="189"/><line x1="0" y1="210" x2="315" y2="210"/><line x1="0" y1="231" x2="315" y2="231"/></g><path d="M60 200 L110 120 L150 160 L200 80 L255 200 Z" fill="#22262e" stroke="#f2b134" stroke-width="2"/><g fill="#5aa9ff" opacity=".8"><rect x="210" y="40" width="2" height="10"/><rect x="225" y="30" width="2" height="12"/><rect x="240" y="45" width="2" height="10"/><rect x="255" y="35" width="2" height="12"/></g><circle cx="232" cy="28" r="16" fill="#979eab" opacity=".5"/><circle cx="248" cy="24" r="14" fill="#979eab" opacity=".5"/><text x="20" y="38" fill="#e7e9ee" font-family="Chakra Petch, sans-serif" font-weight="700" font-size="24">PROJECT-FORGE</text><text x="20" y="58" fill="#f2b134" font-family="IBM Plex Sans, sans-serif" font-size="11">Level design · Dynamic weather · Team of 8</text></svg></div>
       <details class="inspector" open>
         <summary>Project-Forge <span class="tag">Seminar project</span></summary>
         <dl class="fields">
           <div class="field"><dt>Role</dt><dd>Level design and gameplay programming</dd></div>
           <div class="field"><dt>Engine</dt><dd>Unity, C#, Git / GitHub</dd></div>
           <div class="field"><dt>Team</dt><dd>8 people</dd></div>
-          <div class="field"><dt>Systems</dt><dd class="chips">
-            <span>Dynamic weather events</span><span>Level design</span><span>Version control</span>
-          </dd></div>
+          <div class="field"><dt>Context</dt><dd>UADE seminar</dd></div>
+          <div class="field"><dt>Systems</dt><dd class="chips"><span>Dynamic weather events</span><span>Level design</span><span>Version control</span><span>Large-team workflow</span></dd></div>
         </dl>
-        <p class="desc">Team project with 8 developers. I designed levels and programmed dynamic weather events that change how the game plays. All work was tracked through Git, with contributions visible in the commit history.</p>
-        <div class="links">
-          <a href="https://github.com/V2Zeus-Agus" target="_blank" rel="noopener">Source code</a>
-        </div>
+        <p class="desc">Team project with 8 developers. I designed levels and programmed dynamic weather events that change how the game plays. All work was coordinated through Git and GitHub, with my contributions traceable in the commit history.</p>
       </details>
     </article>
-
-    <!-- EXTRACT OR DIE -->
-    <article class="project">
-      <div class="media">
-        Add the itch.io cover at img/extract.png
-        <img src="img/extract.png" alt="Extract or Die gameplay" onerror="this.remove()">
-      </div>
+    <article class="project" id="waves-of-blood">
+      <a class="media" href="https://zeus-agus.itch.io/waves-of-blood" target="_blank" rel="noopener" aria-label="Open Waves of Blood on itch.io">
+        <img src="https://img.itch.zone/aW1nLzMwMDQyNzkyLnBuZw==/315x250%23c/GNuK8f.png" alt="Waves of Blood cover art" loading="lazy">
+        <span class="play">▶ Play on itch.io</span>
+      </a>
       <details class="inspector" open>
-        <summary>Extract or Die <span class="tag">Online multiplayer</span></summary>
-        <dl class="fields">
-          <div class="field"><dt>Role</dt><dd>Networking programming, UI</dd></div>
-          <div class="field"><dt>Engine</dt><dd>Unity, C#, Photon PUN2</dd></div>
-          <div class="field"><dt>Team</dt><dd>5 people</dd></div>
-          <div class="field"><dt>Systems</dt><dd class="chips">
-            <span>Photon PUN2</span><span>UI and menus</span><span>Co-op up to 5</span>
-          </dd></div>
-        </dl>
-        <p class="desc">Isometric co-op shooter: escape a maze through waves of enemies and reach the extraction point. Downed teammates can be revived within 15 seconds.</p>
-        <div class="links">
-          <a href="https://zeus-agus.itch.io" target="_blank" rel="noopener">Play on itch.io</a>
-          <a href="https://github.com/V2Zeus-Agus">Source code</a>
-        </div>
-      </details>
-    </article>
-
-    <!-- WAVES OF BLOOD -->
-    <article class="project">
-      <div class="media">
-        Add the itch.io cover at img/waves.png
-        <img src="img/waves.png" alt="Waves of Blood gameplay" onerror="this.remove()">
-      </div>
-      <details class="inspector" open>
-        <summary>Waves of Blood <span class="tag">Top-down shooter</span></summary>
+        <summary>Waves of Blood <span class="tag">Published on itch.io</span></summary>
         <dl class="fields">
           <div class="field"><dt>Role</dt><dd>Level design, UI, sound, code contributions</dd></div>
           <div class="field"><dt>Engine</dt><dd>Unity, C#</dd></div>
           <div class="field"><dt>Team</dt><dd>2 people</dd></div>
-          <div class="field"><dt>Areas</dt><dd class="chips">
-            <span>Arena layout</span><span>HUD</span><span>Music and SFX</span>
-          </dd></div>
+          <div class="field"><dt>Genre</dt><dd>2D top-down shooter</dd></div>
+          <div class="field"><dt>Areas</dt><dd class="chips"><span>Arena layout</span><span>HUD</span><span>Weapon selection</span><span>Game over flow</span><span>Music and SFX</span></dd></div>
         </dl>
-        <p class="desc">Survive waves of enemies in an arena. I designed the layout, the full interface (HUD, weapon display, game over screen) and all of the game's audio.</p>
+        <p class="desc">Survive increasingly difficult waves of enemies in an arena. I designed the arena layout, built the full interface (HUD, weapon selection and defeat screen), handled all of the sound design and contributed to the gameplay code.</p>
         <div class="links">
-          <a href="https://zeus-agus.itch.io" target="_blank" rel="noopener">Play on itch.io</a>
-          <a href="https://github.com/V2Zeus-Agus">Source code</a>
+          <a href="https://zeus-agus.itch.io/waves-of-blood" target="_blank" rel="noopener">Play on itch.io →</a>
         </div>
       </details>
     </article>
-
-    <!-- MYBOMBERMAN -->
-    <article class="project">
-      <div class="media">
-        Add the itch.io cover at img/bomberman.png
-        <img src="img/bomberman.png" alt="MyBomberman gameplay" onerror="this.remove()">
-      </div>
+    <article class="project" id="my-bomberman">
+      <a class="media" href="https://zeus-agus.itch.io/my-bomberman" target="_blank" rel="noopener" aria-label="Open My Bomberman on itch.io">
+        <img src="https://img.itch.zone/aW1nLzMwMDQ0NzI2LnBuZw==/315x250%23c/M3I6bl.png" alt="My Bomberman cover art" loading="lazy">
+        <span class="play">▶ Play on itch.io</span>
+      </a>
       <details class="inspector" open>
-        <summary>MyBomberman <span class="tag">Solo project</span></summary>
+        <summary>My Bomberman <span class="tag">Solo project</span></summary>
         <dl class="fields">
-          <div class="field"><dt>Role</dt><dd>Everything</dd></div>
+          <div class="field"><dt>Role</dt><dd>Everything: design, code, art integration</dd></div>
           <div class="field"><dt>Engine</dt><dd>Unity, C#</dd></div>
+          <div class="field"><dt>Team</dt><dd>Solo</dd></div>
           <div class="field"><dt>Time</dt><dd>1 week</dd></div>
-          <div class="field"><dt>Systems</dt><dd class="chips">
-            <span>Local multiplayer 2-4</span><span>Grid movement</span><span>Explosions</span><span>Power-ups</span>
-          </dd></div>
+          <div class="field"><dt>Systems</dt><dd class="chips"><span>Local multiplayer 2–4</span><span>Grid movement</span><span>Explosions</span><span>Power-ups</span><span>Keyboard + gamepad</span></dd></div>
         </dl>
-        <p class="desc">Bomberman clone with same-screen local multiplayer on keyboard and gamepads. Built in one week to practice input handling and a complete gameplay loop from start to finish.</p>
+        <p class="desc">Bomberman-style game with same-screen local multiplayer for 2 to 4 players on keyboard and gamepads. Built alone in one week to practice input handling and shipping a complete gameplay loop from start to finish.</p>
         <div class="links">
-          <a href="https://zeus-agus.itch.io" target="_blank" rel="noopener">Play on itch.io</a>
-          <a href="https://github.com/V2Zeus-Agus">Source code</a>
+          <a href="https://zeus-agus.itch.io/my-bomberman" target="_blank" rel="noopener">Play on itch.io →</a>
+          <a href="https://github.com/V2Zeus-Agus/MyBomberman" target="_blank" rel="noopener">Source code →</a>
         </div>
       </details>
     </article>
-
-    <!-- THE SECRET DUNGEON -->
-    <article class="project">
-      <div class="media">
-        Add the itch.io cover at img/dungeon.png
-        <img src="img/dungeon.png" alt="The Secret Dungeon cover" onerror="this.remove()">
-      </div>
+    <article class="project" id="the-secret-dungeon">
+      <a class="media" href="https://zeus-agus.itch.io/the-secret-dungeon" target="_blank" rel="noopener" aria-label="Open The Secret Dungeon on itch.io">
+        <img src="https://img.itch.zone/aW1nLzMwMDM4MzgxLnBuZw==/315x250%23c/DeQdE1.png" alt="The Secret Dungeon cover art" loading="lazy">
+        <span class="play">▶ Play on itch.io</span>
+      </a>
       <details class="inspector" open>
         <summary>The Secret Dungeon <span class="tag">Unreal Engine 5</span></summary>
         <dl class="fields">
           <div class="field"><dt>Role</dt><dd>Level designer</dd></div>
           <div class="field"><dt>Engine</dt><dd>Unreal Engine 5, Blueprints</dd></div>
           <div class="field"><dt>Team</dt><dd>4 people</dd></div>
-          <div class="field"><dt>Areas</dt><dd class="chips">
-            <span>Full map design</span><span>Traps in Blueprints</span><span>Exploration flow</span>
-          </dd></div>
+          <div class="field"><dt>Genre</dt><dd>First-person exploration</dd></div>
+          <div class="field"><dt>Areas</dt><dd class="chips"><span>Full map design</span><span>Traps in Blueprints</span><span>Exploration flow</span><span>Pacing</span></dd></div>
         </dl>
-        <p class="desc">First-person exploration and escape game: you fall into a cave, lose your companions and gather evidence to get out past enemies, traps and lava. I designed 100% of the map and built the traps in Blueprints.</p>
+        <p class="desc">First-person exploration and escape game: you fall into a cave, lose your companions and gather evidence to get out past enemies, traps and lava. I designed 100% of the map and implemented the interactive traps in Blueprints.</p>
         <div class="links">
-          <a href="https://zeus-agus.itch.io/the-secret-dungeon" target="_blank" rel="noopener">Play on itch.io</a>
+          <a href="https://zeus-agus.itch.io/the-secret-dungeon" target="_blank" rel="noopener">Play on itch.io →</a>
         </div>
       </details>
     </article>
   </div>
 </section>
 
-<section id="what-i-do">
+<section id="skills">
   <div class="wrap">
-    <h2>What I do</h2>
-    <p class="section-intro">The two areas I want to specialize in.</p>
+    <h2>Skills</h2>
+    <p class="section-intro">The areas I specialize in and the tools I use every day.</p>
     <div class="skills">
       <div class="skill">
         <h3>Gameplay programming</h3>
-        <p>Player mechanics, enemy behavior, waves, power-ups and reward systems. Code built to be tweaked quickly during playtesting.</p>
+        <p>Player mechanics, enemy behavior, waves, power-ups and boss encounters.</p>
+        <ul><li>Object-oriented C# architecture</li><li>Code built to be tweaked fast during playtesting</li><li>Performance: object pooling</li></ul>
+      </div>
+      <div class="skill">
+        <h3>Game AI & multiplayer</h3>
+        <p>Enemies that think and games people play together.</p>
+        <ul><li>Behavior trees and state machines</li><li>Pathfinding and line of sight</li><li>Photon PUN2: lobbies, rooms, sync</li></ul>
       </div>
       <div class="skill">
         <h3>Level design</h3>
-        <p>Blockouts, pacing, encounter design and level flow. The player should know where to go without anyone telling them.</p>
+        <p>Blockouts, pacing, encounter design and level flow.</p>
+        <ul><li>Arena and maze layouts</li><li>Exploration and escape flow</li><li>Interactive traps (UE5 Blueprints)</li></ul>
       </div>
     </div>
-    <p class="tools"><strong>Tools:</strong> Unity, C#, C++, Visual Studio, Git and GitHub, Photon PUN2. Unreal Engine for level design.<br>
-    <strong>Languages:</strong> Spanish and Portuguese (native), English (intermediate).</p>
+    <div class="stack">
+      <div class="card"><h4>Engines</h4><p>Unity (primary) · Unreal Engine 5</p></div>
+      <div class="card"><h4>Languages</h4><p>C# · C++</p></div>
+      <div class="card"><h4>Networking</h4><p>Photon PUN2</p></div>
+      <div class="card"><h4>Tools</h4><p>Visual Studio · Git · GitHub</p></div>
+      <div class="card"><h4>Also</h4><p>UI programming · Debugging · Sound design · Teamwork</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <h2>Education</h2>
+    <p class="section-intro">Formal training in game development.</p>
+    <div class="card">
+      <h3>Game Development Degree Program · UADE</h3>
+      <div class="when">Aug 2023 – Present · Buenos Aires</div>
+      <p>Advanced student. Two courses remaining to complete the intermediate Game Development Technician qualification within the program. Coursework includes graphics programming, networked games and team-based seminar projects.</p>
+    </div>
   </div>
 </section>
 
 <section id="contact">
   <div class="wrap">
     <h2>Contact</h2>
-    <p class="section-intro">Open to internships, junior roles and indie collaborations.</p>
+    <p class="section-intro">Open to internships, junior roles and indie collaborations. The fastest way to reach me is by email.</p>
     <a class="contact-mail" href="mailto:agustindvigo@gmail.com">agustindvigo@gmail.com</a>
     <div class="contact-links">
-      <a href="https://www.linkedin.com/in/agust%C3%ADn-daniel-vigo-652928181/">LinkedIn</a>
-      <a href="https://zeus-agus.itch.io">itch.io</a>
-      <a href="https://github.com/V2Zeus-Agus">GitHub</a>
+      <a href="https://www.linkedin.com/in/agust%C3%ADn-daniel-vigo-652928181/" target="_blank" rel="noopener">LinkedIn →</a>
+      <a href="https://zeus-agus.itch.io" target="_blank" rel="noopener">itch.io →</a>
+      <a href="https://github.com/V2Zeus-Agus" target="_blank" rel="noopener">GitHub →</a>
+      <a href="cv.pdf.pdf" target="_blank" rel="noopener">CV (PDF) →</a>
     </div>
   </div>
 </section>
 </main>
 
 <footer>
-  <div class="wrap">Agustín Daniel Vigo · 2026</div>
+  <div class="wrap">Agustín Daniel Vigo · 2026 · <a href="#top">Back to top ↑</a></div>
 </footer>
 
 </body>
