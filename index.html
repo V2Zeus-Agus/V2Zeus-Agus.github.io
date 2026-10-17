@@ -191,12 +191,28 @@
     .about-grid, .skills { grid-template-columns: 1fr; }
     .wrap { padding: 0 16px; }
   }
+
+  /* Collapsing a project also shrinks its cover */
+  .project { transition: grid-template-columns .3s ease, margin-bottom .3s ease; }
+  .project .media { transition: border-color .15s, transform .15s, width .3s ease, max-height .3s ease; }
+  .project.is-collapsed { grid-template-columns: 150px 1fr; margin-bottom: 20px; align-items: center; }
+  .project.is-collapsed .media { padding: 0; }
+  .project.is-collapsed .media .play { opacity: 0; pointer-events: none; }
+  .project.is-collapsed .inspector summary { border-bottom: 0; }
+  .media .play { transition: opacity .2s; }
+
+  /* Prototypes mini-section */
+  .prototypes { margin-top: 24px; padding-top: 40px; border-top: 1px solid var(--line); }
+  .prototypes h3 { font-family: var(--display); font-size: 1.6rem; margin-bottom: 8px; }
+  .prototypes .section-intro { margin-bottom: 32px; }
+  .project-nav a.nav-proto { border-style: dashed; }
   @media (max-width: 800px) {
     nav ul { display: none; }
     .project, .skills { grid-template-columns: 1fr; }
     .hero { padding: 64px 0 56px; }
     section { padding: 64px 0; }
     .field { grid-template-columns: 90px 1fr; }
+    .project.is-collapsed { grid-template-columns: 96px 1fr; gap: 14px; }
   }
 </style>
 </head>
@@ -266,7 +282,7 @@
   <div class="wrap">
     <h2>Projects</h2>
     <p class="section-intro">Games made during my degree and on my own. Each one states exactly what I worked on. Click a cover to play it.</p>
-    <div class="project-nav"><a href="#galactic-defenders">Galactic Defenders</a><a href="#urban-lockdown">Urban Lockdown</a><a href="#extract-or-die">Extract or Die</a><a href="#deep-forge">Deep Forge</a><a href="#waves-of-blood">Waves of Blood</a><a href="#my-bomberman">My Bomberman</a><a href="#the-secret-dungeon">The Secret Dungeon</a></div>
+    <div class="project-nav"><a href="#galactic-defenders">Galactic Defenders</a><a href="#extract-or-die">Extract or Die</a><a href="#deep-forge">Deep Forge</a><a href="#waves-of-blood">Waves of Blood</a><a href="#my-bomberman">My Bomberman</a><a href="#the-secret-dungeon">The Secret Dungeon</a><a class="nav-proto" href="#prototypes">Prototypes: Urban Lockdown</a></div>
 
     <article class="project" id="galactic-defenders">
       <a class="media" href="https://romangaelv.itch.io/galactic-defenders" target="_blank" rel="noopener" aria-label="Open Galactic Defenders on itch.io">
@@ -285,26 +301,6 @@
         <p class="desc">Retro 2D space shooter where you defend Earth from waves of aliens. I wrote about 60% of the code and designed every level. I optimized the enemy and projectile spawner with object pooling, and built a settings system (resolution, fullscreen, volume) that persists between sessions. After the course ended I kept improving it: multi-resolution support and a physics-based fix for fast bullets passing through enemies (version 1.3).</p>
         <div class="links">
           <a href="https://romangaelv.itch.io/galactic-defenders" target="_blank" rel="noopener">Play on itch.io →</a>
-        </div>
-      </details>
-    </article>
-    <article class="project" id="urban-lockdown">
-      <a class="media" href="https://zeus-agus.itch.io/urban-lockdo" target="_blank" rel="noopener" aria-label="Open Urban Lockdown on itch.io">
-        <img src="https://img.itch.zone/aW1nLzMwODk2NjYyLmpwZw==/315x250%23c/81R0n%2B.jpg" alt="Urban Lockdown cover art" loading="lazy">
-        <span class="play">▶ Play on itch.io</span>
-      </a>
-      <details class="inspector" open>
-        <summary>Urban Lockdown <span class="tag">AI showcase</span></summary>
-        <dl class="fields">
-          <div class="field"><dt>Role</dt><dd>AI programmer (shared with 1 partner)</dd></div>
-          <div class="field"><dt>Engine</dt><dd>Unity 2022.3 LTS, C#</dd></div>
-          <div class="field"><dt>Team</dt><dd>2 people</dd></div>
-          <div class="field"><dt>Period</dt><dd>Sep – Dec 2025</dd></div>
-          <div class="field"><dt>Systems</dt><dd class="chips"><span>Pathfinding</span><span>Obstacle avoidance</span><span>Line of sight</span><span>Behavior trees</span><span>State machine</span></dd></div>
-        </dl>
-        <p class="desc">3D shooter built around intelligent enemies that patrol, chase and flank the player. I built the NPC pathfinding with dynamic obstacle avoidance, line-of-sight detection for enemy awareness, a behavior tree architecture with action inheritance, and the enemy state machine (patrol and chase) with smooth transitions between states.</p>
-        <div class="links">
-          <a href="https://zeus-agus.itch.io/urban-lockdo" target="_blank" rel="noopener">Play on itch.io →</a>
         </div>
       </details>
     </article>
@@ -404,6 +400,31 @@
         </div>
       </details>
     </article>
+
+    <div class="prototypes" id="prototypes">
+      <h3>Prototypes</h3>
+      <p class="section-intro">Smaller builds focused on a single system. Playable, but not full games yet.</p>
+      <article class="project" id="urban-lockdown">
+        <a class="media" href="https://zeus-agus.itch.io/urban-lockdo" target="_blank" rel="noopener" aria-label="Open Urban Lockdown on itch.io">
+          <img src="https://img.itch.zone/aW1nLzMwODk2NjYyLmpwZw==/315x250%23c/81R0n%2B.jpg" alt="Urban Lockdown cover art" loading="lazy">
+          <span class="play">▶ Play on itch.io</span>
+        </a>
+        <details class="inspector" open>
+          <summary>Urban Lockdown <span class="tag">Prototype · AI showcase</span></summary>
+          <dl class="fields">
+            <div class="field"><dt>Role</dt><dd>AI programmer (shared with 1 partner)</dd></div>
+            <div class="field"><dt>Engine</dt><dd>Unity 2022.3 LTS, C#</dd></div>
+            <div class="field"><dt>Team</dt><dd>2 people</dd></div>
+            <div class="field"><dt>Period</dt><dd>Sep – Dec 2025</dd></div>
+            <div class="field"><dt>Systems</dt><dd class="chips"><span>Pathfinding</span><span>Obstacle avoidance</span><span>Line of sight</span><span>Behavior trees</span><span>State machine</span></dd></div>
+          </dl>
+          <p class="desc">3D shooter built around intelligent enemies that patrol, chase and flank the player. I built the NPC pathfinding with dynamic obstacle avoidance, line-of-sight detection for enemy awareness, a behavior tree architecture with action inheritance, and the enemy state machine (patrol and chase) with smooth transitions between states.</p>
+          <div class="links">
+            <a href="https://zeus-agus.itch.io/urban-lockdo" target="_blank" rel="noopener">Play on itch.io →</a>
+          </div>
+        </details>
+      </article>
+    </div>
   </div>
 </section>
 
@@ -469,5 +490,16 @@
   <div class="wrap">Agustín Daniel Vigo · 2026 · <a href="#top">Back to top ↑</a></div>
 </footer>
 
+
+<script>
+  // Shrink the cover when a project's inspector is collapsed, restore it when opened
+  document.querySelectorAll('.project').forEach(function (project) {
+    var inspector = project.querySelector('details.inspector');
+    if (!inspector) return;
+    var sync = function () { project.classList.toggle('is-collapsed', !inspector.open); };
+    inspector.addEventListener('toggle', sync);
+    sync();
+  });
+</script>
 </body>
 </html>
