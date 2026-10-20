@@ -214,6 +214,83 @@
     .field { grid-template-columns: 90px 1fr; }
     .project.is-collapsed { grid-template-columns: 96px 1fr; gap: 14px; }
   }
+
+  /* ===== Visual polish: background, glow, depth ===== */
+  body {
+    background:
+      radial-gradient(900px 600px at 8% -10%, rgba(242, 177, 52, 0.13), transparent 60%),
+      radial-gradient(800px 600px at 100% 0%, rgba(90, 169, 255, 0.10), transparent 60%),
+      radial-gradient(1000px 700px at 50% 120%, rgba(242, 120, 52, 0.07), transparent 60%),
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px) 0 0 / 48px 48px,
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px) 0 0 / 48px 48px,
+      var(--bg);
+    background-attachment: fixed;
+  }
+  body::after {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.45) 100%);
+  }
+  nav, header, main, footer { position: relative; z-index: 1; }
+  nav { z-index: 10; }
+  .brand::before {
+    content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 10px;
+    background: var(--amber); transform: rotate(45deg) translateY(-2px);
+    box-shadow: 0 0 12px rgba(242, 177, 52, 0.8);
+  }
+
+  /* Hero */
+  .hero { position: relative; overflow: hidden; }
+  #sparks { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+  .hero .wrap { position: relative; z-index: 1; }
+  h1 {
+    background: linear-gradient(180deg, #ffffff 0%, #d9dde5 55%, #f2b134 140%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 0 30px rgba(242, 177, 52, 0.12));
+  }
+  .btn { transition: background .15s, border-color .15s, transform .15s, box-shadow .15s; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-main { box-shadow: 0 6px 24px rgba(242, 177, 52, 0.25); }
+  .btn-main:hover { box-shadow: 0 10px 30px rgba(242, 177, 52, 0.4); }
+  .btn-alt { background: rgba(26, 29, 35, 0.6); backdrop-filter: blur(4px); }
+  .stat { padding-left: 14px; border-left: 2px solid rgba(242, 177, 52, 0.5); }
+
+  /* Section headings with an accent kicker */
+  section h2 { position: relative; padding-top: 18px; }
+  section h2::before {
+    content: ""; position: absolute; top: 0; left: 0; width: 44px; height: 3px;
+    background: linear-gradient(90deg, var(--amber), transparent);
+  }
+
+  /* Panels: glass + glow */
+  .inspector, .card {
+    background: linear-gradient(180deg, rgba(34, 38, 46, 0.85), rgba(26, 29, 35, 0.85));
+    backdrop-filter: blur(6px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .project:hover .inspector, .card:hover {
+    border-color: rgba(242, 177, 52, 0.45);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(242, 177, 52, 0.08), 0 0 40px rgba(242, 177, 52, 0.06);
+  }
+  .media { box-shadow: 0 12px 34px rgba(0, 0, 0, 0.4); }
+  .media img { transition: transform .4s ease; }
+  a.media:hover img { transform: scale(1.04); }
+  a.media:hover { box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(242, 177, 52, 0.15); }
+  .skill {
+    background: linear-gradient(180deg, rgba(34, 38, 46, 0.55), transparent);
+    padding: 18px 18px 8px; border-radius: 0 0 4px 4px;
+  }
+  #contact { background: radial-gradient(700px 300px at 0% 100%, rgba(242, 177, 52, 0.08), transparent 70%); }
+
+  /* Reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.is-visible { opacity: 1; transform: none; }
+  /* keep the collapse animation on projects that also fade in */
+  .project.reveal { transition: opacity .6s ease, transform .6s ease, grid-template-columns .3s ease, margin-bottom .3s ease; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    #sparks { display: none; }
+  }
 </style>
 </head>
 <body>
@@ -232,6 +309,7 @@
 </nav>
 
 <header class="hero" id="top">
+  <canvas id="sparks" aria-hidden="true"></canvas>
   <div class="wrap">
     <div class="status">Buenos Aires, Argentina · Available full-time · EU work authorization</div>
     <h1>Agustín<br>Daniel Vigo</h1>
@@ -246,7 +324,7 @@
     </div>
     <div class="stats">
       <a class="stat" href="#projects" style="text-decoration:none"><b>7</b><span>games built</span></a>
-      <a class="stat" href="https://zeus-agus.itch.io" target="_blank" rel="noopener" style="text-decoration:none"><b>6</b><span>published on itch.io</span></a>
+      <a class="stat" href="https://zeus-agus.itch.io" target="_blank" rel="noopener" style="text-decoration:none"><b>7</b><span>projects on itch.io</span></a>
       <a class="stat" href="#extract-or-die" style="text-decoration:none"><b>Online</b><span>multiplayer with Photon</span></a>
       <a class="stat" href="#urban-lockdown" style="text-decoration:none"><b>AI</b><span>behavior trees & pathfinding</span></a>
     </div>
@@ -326,9 +404,12 @@
       </details>
     </article>
     <article class="project" id="deep-forge">
-      <div class="media"><img src="deep-forge.jpg" alt="Deep Forge title screen" loading="lazy"></div>
+      <a class="media" href="https://zeus-agus.itch.io/deep-forge" target="_blank" rel="noopener" aria-label="Open Deep Forge on itch.io">
+        <img src="deep-forge.jpg" alt="Deep Forge title screen" loading="lazy">
+        <span class="play">▶ View on itch.io</span>
+      </a>
       <details class="inspector" open>
-        <summary>Deep Forge <span class="tag">Seminar project</span></summary>
+        <summary>Deep Forge <span class="tag">In development</span></summary>
         <dl class="fields">
           <div class="field"><dt>Role</dt><dd>Island design, environment programming</dd></div>
           <div class="field"><dt>Engine</dt><dd>Unity, C#, Git / GitHub</dd></div>
@@ -337,6 +418,9 @@
           <div class="field"><dt>Systems</dt><dd class="chips"><span>Island design</span><span>Storms</span><span>Environmental mechanics</span><span>Version control</span><span>Large-team workflow</span></dd></div>
         </dl>
         <p class="desc">8-person team project. I designed the islands and contributed gameplay code for the storms and small environmental mechanics.</p>
+        <div class="links">
+          <a href="https://zeus-agus.itch.io/deep-forge" target="_blank" rel="noopener">View on itch.io →</a>
+        </div>
       </details>
     </article>
     <article class="project" id="waves-of-blood">
@@ -500,6 +584,51 @@
     inspector.addEventListener('toggle', sync);
     sync();
   });
+
+  // Fade sections and projects in as they scroll into view
+  (function () {
+    var items = document.querySelectorAll('section h2, .section-intro, .project, .about-grid, .skill, .stack .card, #education .card, .contact-mail, .contact-links');
+    if (!('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    items.forEach(function (el) { el.classList.add('reveal'); io.observe(el); });
+  })();
+
+  // Forge sparks rising behind the hero
+  (function () {
+    var c = document.getElementById('sparks');
+    if (!c || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var ctx = c.getContext('2d'), sparks = [], w, h, dpr = Math.min(window.devicePixelRatio || 1, 2);
+    function resize() { w = c.offsetWidth; h = c.offsetHeight; c.width = w * dpr; c.height = h * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
+    function spawn() {
+      return { x: Math.random() * w, y: h + 10, r: Math.random() * 1.8 + 0.6,
+               vy: Math.random() * 0.6 + 0.25, vx: (Math.random() - 0.5) * 0.3,
+               life: 0, max: Math.random() * 400 + 300, hue: 30 + Math.random() * 20 };
+    }
+    resize(); window.addEventListener('resize', resize);
+    for (var i = 0; i < 45; i++) { var s = spawn(); s.y = Math.random() * h; s.life = Math.random() * s.max; sparks.push(s); }
+    var visible = true;
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (e) { visible = e[0].isIntersecting; }).observe(c);
+    }
+    (function tick() {
+      requestAnimationFrame(tick);
+      if (!visible || document.hidden) return; // pause when the hero is off-screen
+      ctx.clearRect(0, 0, w, h);
+      sparks.forEach(function (s, i) {
+        s.x += s.vx + Math.sin((s.life + i * 40) / 60) * 0.15; s.y -= s.vy; s.life++;
+        var a = Math.max(0, 1 - s.life / s.max) * 0.8;
+        ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'hsla(' + s.hue + ', 95%, 60%, ' + a + ')';
+        ctx.shadowColor = 'hsla(' + s.hue + ', 95%, 55%, ' + a + ')'; ctx.shadowBlur = 8;
+        ctx.fill();
+        if (s.life > s.max || s.y < -10) sparks[i] = spawn();
+      });
+    })();
+  })();
 </script>
 </body>
 </html>
