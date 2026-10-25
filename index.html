@@ -267,6 +267,29 @@
   .stack h4 { font-family: var(--mono); font-weight: 500; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
   .stack p { color: var(--text); font-size: .94rem; }
 
+  /* ---------- Experience ---------- */
+  .job {
+    display: grid; grid-template-columns: 200px 1fr; gap: 24px;
+    padding: 24px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  }
+  .job .when { color: var(--amber); font-family: var(--mono); font-size: .85rem; padding-top: 4px; }
+  .job .where { color: var(--muted); font-size: .88rem; }
+  .job-title { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-bottom: 8px; }
+  .job h3 { font-family: var(--display); font-size: 1.25rem; }
+  .job .badge {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--amber); background: var(--amber-dim); border: 1px solid rgba(242,177,52,.35);
+    border-radius: 3px; padding: 3px 8px;
+  }
+  .job .badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--amber); }
+  .job p { color: var(--text-2); font-size: .97rem; }
+  .job .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; list-style: none; }
+  .job .tags li {
+    font-size: .85rem; color: var(--text-2); background: var(--panel);
+    border: 1px solid var(--line); border-radius: 3px; padding: 4px 10px;
+  }
+
   /* ---------- Education ---------- */
   .edu {
     display: grid; grid-template-columns: 200px 1fr; gap: 24px;
@@ -379,7 +402,8 @@
     .stack > div:nth-child(even) { border-left: 1px solid var(--line) !important; }
     .stack > div:last-child { grid-column: 1 / -1; border-left: 0 !important; }
 
-    .edu { grid-template-columns: 1fr; gap: 6px; }
+    .edu, .job { grid-template-columns: 1fr; gap: 6px; }
+    .job .when-box { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; margin-bottom: 4px; }
     .contact-box { grid-template-columns: 1fr; gap: 32px; }
   }
   @media (max-width: 380px) {
@@ -398,6 +422,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="#contact">Contact</a></li>
       <li class="nav-cv"><a href="cv.pdf.pdf" target="_blank" rel="noopener">CV</a></li>
@@ -637,9 +662,23 @@
   </div>
 </section>
 
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head"><span class="num">04</span><h2>Experience</h2></div>
+    <div class="job">
+      <div class="when-box"><div class="when">2026 - Present</div><div class="where" id="job-duration">1 month</div></div>
+      <div>
+        <div class="job-title"><h3>Level Designer · ACE 87 Studios</h3><span class="badge">Current</span></div>
+        <p>Level blockouts for the studio's games.</p>
+        <ul class="tags"><li>Blockouts</li><li>Level design</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="education">
   <div class="wrap">
-    <div class="section-head"><span class="num">04</span><h2>Education</h2></div>
+    <div class="section-head"><span class="num">05</span><h2>Education</h2></div>
     <div class="edu">
       <div><div class="when">2023 - Present</div><div class="where">Buenos Aires</div></div>
       <div>
@@ -652,7 +691,7 @@
 
 <section id="contact">
   <div class="wrap">
-    <div class="section-head"><span class="num">05</span><h2>Contact</h2></div>
+    <div class="section-head"><span class="num">06</span><h2>Contact</h2></div>
     <p class="section-intro">Open to internships, junior roles and indie collaborations. The fastest way to reach me is by email.</p>
     <div class="contact-box">
       <div>
@@ -709,6 +748,20 @@
     Object.keys(links).forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
   })();
 
+  // Keep the time at ACE 87 Studios up to date (started late September 2026)
+  (function () {
+    var el = document.getElementById('job-duration');
+    if (!el) return;
+    var start = new Date(2026, 8, 25), now = new Date();
+    var m = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth());
+    if (now.getDate() < start.getDate()) m--;
+    m = Math.max(1, m);
+    var y = Math.floor(m / 12), r = m % 12, out = [];
+    if (y) out.push(y + (y === 1 ? ' year' : ' years'));
+    if (r) out.push(r + (r === 1 ? ' month' : ' months'));
+    el.textContent = out.join(' ');
+  })();
+
   // Copy email
   document.querySelectorAll('[data-copy]').forEach(function (b) {
     b.addEventListener('click', function () {
@@ -721,7 +774,7 @@
 
   // Fade sections and projects in as they scroll into view
   (function () {
-    var items = document.querySelectorAll('.section-head, .section-intro, .project, .about-grid, .skill, .stack, .edu, .contact-box');
+    var items = document.querySelectorAll('.section-head, .section-intro, .project, .about-grid, .skill, .stack, .job, .edu, .contact-box');
     if (!('IntersectionObserver' in window)) return;
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
